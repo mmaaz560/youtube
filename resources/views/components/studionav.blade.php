@@ -1,8 +1,8 @@
 <!-- overlay and popup card -->
 
-<form accept="/upload-video" method="POST"
+<form action="/upload-video" method="POST" enctype="multipart/form-data"
     class="fixed top-0 min-h-screen flex  bg-black/60 z-300 w-full  justify-center items-center">
-
+    @csrf
     <!-- first form  -->
 
     <div class="card shadow-lg p-3 first-form w-[70%] h-[450px]   rounded-lg border-0 bg-white">

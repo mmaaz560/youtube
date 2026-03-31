@@ -15,12 +15,12 @@ return new class extends Migration
     $table->id();
 
     $table->string('video');
-    $table->string('title');
+    $table->string('title',100);
     $table->text('description')->nullable();
     $table->string('thumbnail')->nullable();
     $table->string('playlist')->nullable();
-    $table->string('kids');
-    $table->string('visibility');
+    $table->boolean('kids')->default(false);
+    $table->enum('visibility', ['public', 'private', 'unlisted'])->default('public');
 
     $table->timestamps();
    });

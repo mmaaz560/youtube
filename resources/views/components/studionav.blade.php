@@ -1,3 +1,29 @@
+@if (session('message'))
+<div id="message" class="fixed top-5 right-5 z-600 flex items-center gap-3 bg-white/90 backdrop-blur-md border border-green-200 text-green-700 px-6 py-4 rounded-2xl shadow-2xl transition-all duration-500 translate-y-0 opacity-100">
+
+    <div class="flex items-center justify-center w-10 h-10 bg-green-500 text-white rounded-full text-lg">
+        ✓
+    </div>
+
+    <div>
+        <p class="font-semibold">Success</p>
+        <p class="text-sm text-gray-600">Video uploaded successfully</p>
+    </div>
+
+</div>
+
+<script>
+    setTimeout(() => {
+        const msg = document.getElementById('message');
+        msg.style.opacity = '0';
+        msg.style.transform = 'translateY(-20px)';
+        setTimeout(() => {
+            msg.remove();
+        }, 500);
+    }, 2000);
+</script>
+    
+@endif
 <!-- overlay and popup card -->
 
 <form action="/upload-video" method="POST" enctype="multipart/form-data"
@@ -117,6 +143,7 @@
                     </button>
                 </div>
             </div>
+            {{-- right side --}}
 
             <div class="w-80 shrink-0 mt-3 space-y-4">
                 <div class=" rounded p-2">
@@ -134,7 +161,7 @@
         </div>
 
         <div class="flex justify-end p-4 space-x-2  border-t border-gray-700">
-            <button class="px-4 py-1 rounded border next hover:bg-gray-300 ">Next</button>
+            <button type="button" class="px-4 py-1 rounded border next hover:bg-gray-300 ">Next</button>
         </div>
 
     </div>
@@ -293,7 +320,7 @@
 
     video_input.on('input', (e) => {
         let file = e.target.files[0]
-        form1.addClass('hidden')
+        form1.addClass('hidden').removeClass('flex')
         form2.removeClass('hidden').addClass('flex')
         let link = URL.createObjectURL(file)
         $('.video-previwe ').attr('src', link)

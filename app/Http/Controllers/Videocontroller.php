@@ -17,7 +17,7 @@ class Videocontroller extends Controller
         'kids'=>$req->boolean('kids'),
         'visibility'=>$req->input('visibility')
         ];
-
+       
 
         $formfields['video']=$req->file('video')->store('videos','public');
         $formfields['thumbnail']=$req->file('input-image')->store('thumbnails','public');
@@ -25,7 +25,7 @@ class Videocontroller extends Controller
 
         Videos::create($formfields);
 
-        return redirect('/studio');
+      return redirect('/studio')->with('message','video uploaded successfully');
 
     }
 }

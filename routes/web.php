@@ -11,6 +11,4 @@ Route::get('/', function () {
 
 Route::view('/studio','studio');
 
-
-
 Route::post('/upload-video', [Videocontroller::class, 'uploadvideo']);

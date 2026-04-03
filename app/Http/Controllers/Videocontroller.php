@@ -1,9 +1,9 @@
 <?php
 
 namespace App\Http\Controllers;
-
 use App\Models\Videos;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class Videocontroller extends Controller
 {
@@ -19,9 +19,13 @@ class Videocontroller extends Controller
         ];
        
 
+       
+
+      
+
         $formfields['video']=$req->file('video')->store('videos','public');
         $formfields['thumbnail']=$req->file('input-image')->store('thumbnails','public');
-
+        $formfields['user_id'] =Auth::id();
 
         Videos::create($formfields);
 

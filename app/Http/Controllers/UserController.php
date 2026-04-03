@@ -22,6 +22,33 @@ class UserController extends Controller
      $user = User::create($formfeilds);
        
      Auth::login($user);
-     return redirect('/');
+     return redirect('/')->with('message', 'Welcome to the App');
     }
+
+
+    // logout user controller
+    public function logout(Request $req){
+        Auth::logout();
+        return redirect('/')->with('message ', 'Hopping to see You Again');
+    }
+
+
+
+    // login 
+    
+    public function loginUser(Request $req){
+        $formfeilds = [
+            'email' => $req->input('email'),
+            'password'=> $req->input('password')
+        ];
+
+        if(Auth::attempt($formfeilds)){
+            return redirect('/')->with('message', 'Welcome Back');
+        }
+        else {
+            return back()->with('message', 'Invalid Credentials');
+        }
+    }
+    
+    
 }

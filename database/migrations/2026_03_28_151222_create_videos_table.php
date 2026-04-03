@@ -21,7 +21,7 @@ return new class extends Migration
     $table->string('playlist')->nullable();
     $table->boolean('kids')->default(false);
     $table->enum('visibility', ['public', 'private', 'unlisted'])->default('public');
-
+   
     $table->timestamps();
    });
     }

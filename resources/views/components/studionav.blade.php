@@ -1,29 +1,4 @@
-@if (session('message'))
-<div id="message" class="fixed top-5 right-5 z-600 flex items-center gap-3 bg-white/90 backdrop-blur-md border border-green-200 text-green-700 px-6 py-4 rounded-2xl shadow-2xl transition-all duration-500 translate-y-0 opacity-100">
-
-    <div class="flex items-center justify-center w-10 h-10 bg-green-500 text-white rounded-full text-lg">
-        ✓
-    </div>
-
-    <div>
-        <p class="font-semibold">Success</p>
-        <p class="text-sm text-gray-600">Video uploaded successfully</p>
-    </div>
-
-</div>
-
-<script>
-    setTimeout(() => {
-        const msg = document.getElementById('message');
-        msg.style.opacity = '0';
-        msg.style.transform = 'translateY(-20px)';
-        setTimeout(() => {
-            msg.remove();
-        }, 500);
-    }, 2000);
-</script>
-    
-@endif
+<x-flash/>
 <!-- overlay and popup card -->
 
 <form action="/upload-video" method="POST" enctype="multipart/form-data"
@@ -36,7 +11,10 @@
             <h1 class="font-semibold">Uplode videos</h1>
             <div class="flex gap-3 font-semibold">
                 <i class="bi bi-chat-square-dots"></i>
-                <i class="bi bi-x-lg"></i>
+                <a href="/">
+                 <i class="bi bi-x-lg"></i>
+                </a>
+               
             </div>
         </div>
         <div style="flex-direction: column;" class="flex  items-center justify-center">

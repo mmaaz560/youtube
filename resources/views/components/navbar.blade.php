@@ -1,3 +1,5 @@
+<x-flash/>
+
 <div class="flex justify-between bg-zinc-300 items-center p-1">
     <div class="logo flex gap-2 items-center">
         <i class="bi bi-list text-2xl"></i>
@@ -15,7 +17,9 @@
         <i class="bi bi-bell bg-gray-400 w-[25px] h-[25px] rounded-full flex items-center justify-center p-4"></i>
       
        @guest
+          <a href="/login">
             <i class="bi bi-person login bg-gray-400 w-[25px] h-[25px] rounded-full flex items-center justify-center p-4"></i>
+         </a>
        @endguest
 
 
@@ -27,6 +31,12 @@
         <div class="flex bg-gray-400 py-1 cursor-pointer px-3 justify-center  rounded-full items-center ">
            {{ auth()->user()->name }}
         </div>
+        <form action="/logout" method="POST">
+            @csrf
+            <button type="submit" class="bg-gray-400 hover:bg-gray-500 cursor-pointer font-semibold py-1 px-4 rounded-full">
+                Logout
+            </button>
+        </form>
        @endauth
 
     </div>

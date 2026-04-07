@@ -1,7 +1,8 @@
 <x-layout>
-    <div class="fixed left-0 top-15.3 h-[90vh] overflow-y-scroll  w-60 bg-gray-300 shadow-xl">
+        <div class="flex pt-16">
 
-        <div class=" l px-2 mt-2">
+        <div class="w-60 p-4 h-[calc(100vh-64px)] overflow-y-scroll scrollbar-hide shadow-2xl fixed left-0 top-16">
+
 
             <a href="#" class="flex items-center gap-4 px-4 py-2 rounded-xl hover:bg-gray-100 transition">
                 <i class="bi bi-house-door text-lg"></i>
@@ -84,6 +85,31 @@
                 <i class="bi bi-truck-front text-lg"></i>
                 <span>Sports</span>
             </a>
+
+              <hr class="my-2">
+
+               <a href="#" class="flex items-center gap-1 px-4 py-2 rounded-xl hover:bg-gray-100 transition">
+                <span class="font-medium">More from YouTube</span>
+                <i class="bi bi-chevron-right"></i>
+            </a>
+
+            <a href="#" class="flex items-center gap-4 px-4 py-2 rounded-xl hover:bg-gray-100 transition">
+            
+             <i class="bi bi-youtube text-red-600 text-3xl"></i>
+             
+                <span>Youtube Premium</span>
+            </a>
+
+            <a href="#" class="flex items-center gap-4 px-4 py-2 rounded-xl hover:bg-gray-100 transition">
+              <i class="bi bi-play-circle-fill text-red-600 text-3xl"></i>
+                <span>Youtube Music</span>
+            </a>
+
+            <a href="#" class="flex mb-3 items-center gap-4 px-4 py-2 rounded-xl hover:bg-gray-100 transition">
+               <i class="bi bi-youtube text-red-600 text-3xl"></i>
+                <span>Youtube Kids</span>
+            </a>
+
 
         </div>
 

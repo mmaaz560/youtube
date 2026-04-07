@@ -1,6 +1,6 @@
 <x-flash/>
 
-<div class="flex justify-between bg-zinc-300 items-center p-1">
+<div class="flex fixed z-600  top-0 left-0 right-0 h-14  justify-between bg-zinc-300 items-center p-1">
     <div class="logo flex gap-2 items-center">
         <i class="bi bi-list text-2xl"></i>
         <img src="https://www.freeiconspng.com/uploads/youtube-logo-png-transparent-image-5.png" width="100px" alt="">

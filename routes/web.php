@@ -20,3 +20,5 @@ Route::post('/upload-video', [Videocontroller::class, 'uploadvideo']);
 Route::post('/register', [UserController::class, 'registerUser']);
 Route::post('/login', [UserController::class, 'loginUser']);
 Route::post('/logout', [UserController::class, 'logout']);
+
+Route::get('/',[Videocontroller::class, 'getvideos']);

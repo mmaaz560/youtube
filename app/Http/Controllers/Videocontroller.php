@@ -32,4 +32,10 @@ class Videocontroller extends Controller
       return redirect('/studio')->with('message','video uploaded successfully');
 
     }
+
+    public function getvideos(){
+      $allVideos = Videos::all();
+      return view('welcome', compact('allVideos'));
+    }
+    
 }

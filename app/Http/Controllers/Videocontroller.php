@@ -1,6 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
+
+use App\Models\User;
 use App\Models\Videos;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -37,5 +39,11 @@ class Videocontroller extends Controller
       $allVideos = Videos::all();
       return view('welcome', compact('allVideos'));
     }
+     
+  public function getsinglevideo($id){
+    $video = Videos::findOrFail($id);
+    return view('single-video', compact('video'));
+  }
     
+
 }

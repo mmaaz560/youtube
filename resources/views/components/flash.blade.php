@@ -1,5 +1,5 @@
 @if (session('message'))
-<div id="message" class="fixed top-5 right-5 z-600 flex items-center gap-3 bg-white/90 backdrop-blur-md border border-green-200 text-green-700 px-6 py-4 rounded-2xl shadow-2xl transition-all duration-500 translate-y-0 opacity-100">
+<div id="message" class="fixed top-5 right-5 z-700 flex items-center gap-3 bg-white/90 backdrop-blur-md border border-green-200 text-green-700 px-6 py-4 rounded-2xl shadow-2xl transition-all duration-500 translate-y-0 opacity-100">
 
     <div class="flex items-center justify-center w-10 h-10 bg-green-500 text-white rounded-full text-lg">
         ✓

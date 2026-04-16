@@ -75,7 +75,7 @@
     <!-- Video Info -->
     <div class="px-6 py-4  bg-gray-50">
       <p class="text-sm text-gray-600">
-        828K views • 1 month ago 
+        {{ $videoviews->views ?? 1 }} views • 1 month ago
         
       </p>
       <div class="text-gray-400 text-sm mt-2 leading-relaxed">
@@ -86,7 +86,7 @@
     <!-- Comments Header -->
     <div class="px-6 py-4  flex items-center gap-4 bg-white">
       <div class="flex items-center gap-3">
-        <h2 class="text-xl font-semibold text-gray-800">56 Comments</h2>
+        <h2 class="text-xl font-semibold comment-count text-gray-800">0 Comments</h2>
       </div>
       <div class="flex items-center gap-2 text-gray-600 hover:text-gray-800 cursor-pointer">
         <i class="bi bi-filter text-xl"></i>
@@ -95,11 +95,11 @@
     </div>
 
     <!-- Add Comment -->
-    <div class="px-6 py-5  flex gap-4 bg-white">
+    <div class="ps-6 py-5  flex gap-4 bg-white">
       <div class="w-10 h-10 rounded-full bg-linear-to-br from-orange-400 to-red-500 shrink-0 flex items-center justify-center text-white font-bold text-lg">
         M
       </div>
-      <form  class="flex-1 bg-gray-100 px-4 rounded-md">
+      <form  class="flex-1 ">
        <input type="hidden" value="{{ $video->id }}" name="video_id">
        @auth
         <input type="hidden" value="{{ auth()->user()->id }}" name="user_id">
@@ -109,7 +109,7 @@
         id="comm" 
         name="comment"
         placeholder="Add a comment..." 
-        class="w-full com-input bg-transparent border-gray-400 py-2 focus:outline-none focus:border-blue-500 text-gray-700 placeholder-gray-400"
+        class="w-full com-input ps-4 rounded-md bg-gray-100  border-gray-400 py-2 focus:outline-none focus:border-blue-500 text-gray-700 placeholder-gray-400"
     >
 
     <!-- Buttons -->
@@ -124,9 +124,9 @@
 
         <button 
             type="button"
-            class="bg-blue-600 comment-btn px-4 py-2 rounded-full text-white font-medium hover:bg-blue-700 transition"
-        >
-            Comment
+            class="bg-blue-600 comment-btn px-4 py-2 rounded-full text-white font-medium hover:bg-blue-700 transition">
+            <img class="loader hidden" src="https://cdn.pixabay.com/animation/2023/11/30/10/11/10-11-02-622_512.gif" width="30px" alt=""> 
+            <span class="comment-text">Comment</span>
         </button>
     </div>
 
@@ -136,128 +136,12 @@
     </div>
     
 
+    
     <!-- Comments List -->
-    <div class="">
-
-      <!-- Comment 1 -->
-      <div class="px-6 py-5 hover:bg-gray-50">
-        <div class="flex gap-4">
-          <div class="w-9 h-9 rounded-full bg-green-600 flex items-center justify-center text-white font-semibold shrink-0">
-            R
-          </div>
-          <div class="flex-1">
-            <div class="flex items-center gap-2">
-              <span class="font-semibold text-gray-900">@RamRaj25-1</span>
-              <span class="text-gray-500 text-sm">3 weeks ago</span>
-            </div>
-            <p class="text-gray-800 mt-1 leading-relaxed">
-              zdjfvhJKHF.H
-            </p>
-            <div class="flex items-center gap-6 mt-3 text-gray-600">
-              <div class="flex items-center gap-1.5 hover:text-blue-600 cursor-pointer">
-                <i class="bi bi-hand-thumbs-up text-lg"></i>
-                <span class="text-sm font-medium">14</span>
-              </div>
-              <div class="flex items-center gap-1.5 hover:text-red-600 cursor-pointer">
-                <i class="bi bi-hand-thumbs-down text-lg"></i>
-              </div>
-              <span class="text-sm font-medium hover:text-blue-600 cursor-pointer">Reply</span>
-            </div>
-          </div>
-          <button class="text-gray-400 hover:text-gray-600">
-            <i class="bi bi-three-dots-vertical"></i>
-          </button>
-        </div>
-      </div>
-
-      <!-- Comment 2 -->
-      <div class="px-6 py-5 hover:bg-gray-50">
-        <div class="flex gap-4">
-          <div class="w-9 h-9 rounded-full bg-blue-600 flex items-center justify-center text-white font-semibold shrink-0">
-            R
-          </div>
-          <div class="flex-1">
-            <div class="flex items-center gap-2">
-              <span class="font-semibold text-gray-900">RameshGothwal-m8w3s</span>
-              <span class="text-gray-500 text-sm">1 month ago</span>
-            </div>
-            <p class="text-gray-800 mt-1 leading-relaxed">
-              ydtoyioickhgfilysil;p
-            </p>
-            <div class="flex items-center gap-6 mt-3 text-gray-600">
-              <div class="flex items-center gap-1.5 hover:text-blue-600 cursor-pointer">
-                <i class="bi bi-hand-thumbs-up text-lg"></i>
-                <span class="text-sm font-medium">29</span>
-              </div>
-              <div class="flex items-center gap-1.5 hover:text-red-600 cursor-pointer">
-                <i class="bi bi-hand-thumbs-down text-lg"></i>
-              </div>
-              <span class="text-sm font-medium hover:text-blue-600 cursor-pointer">Reply</span>
-            </div>
-          </div>
-          <button class="text-gray-400 hover:text-gray-600">
-            <i class="bi bi-three-dots-vertical"></i>
-          </button>
-        </div>
-      </div>
-
-      <!-- Comment 3 -->
-      <div class="px-6 py-5 hover:bg-gray-50">
-        <div class="flex gap-4">
-          <img src="https://i.pravatar.cc/150?u=jacky" alt="User" class="w-9 h-9 rounded-full shrink-0">
-          <div class="flex-1">
-            <div class="flex items-center gap-2">
-              <span class="font-semibold text-gray-900">@jackyjack..4842</span>
-              <span class="text-gray-500 text-sm">1 month ago</span>
-            </div>
-            <p class="text-gray-800 mt-1 leading-relaxed">
-              Vijay raaz best comedian.....!!!
-            </p>
-            <div class="flex items-center gap-6 mt-3 text-gray-600">
-              <div class="flex items-center gap-1.5 hover:text-blue-600 cursor-pointer">
-                <i class="bi bi-hand-thumbs-up text-lg"></i>
-                <span class="text-sm font-medium">11</span>
-              </div>
-              <div class="flex items-center gap-1.5 hover:text-red-600 cursor-pointer">
-                <i class="bi bi-hand-thumbs-down text-lg"></i>
-              </div>
-              <span class="text-sm font-medium hover:text-blue-600 cursor-pointer">Reply</span>
-            </div>
-          </div>
-          <button class="text-gray-400 hover:text-gray-600">
-            <i class="bi bi-three-dots-vertical"></i>
-          </button>
-        </div>
-      </div>
-
-      <!-- Comment 4 -->
-      <div class="px-6 py-5 hover:bg-gray-50">
-        <div class="flex gap-4">
-          <img src="https://i.pravatar.cc/150?u=awdhesh" alt="User" class="w-9 h-9 rounded-full shrink-0">
-          <div class="flex-1">
-            <div class="flex items-center gap-2">
-              <span class="font-semibold text-gray-900">@AwdheshKumar-ql7bq</span>
-              <span class="text-gray-500 text-sm">1 month ago</span>
-            </div>
-            <p class="text-gray-800 mt-1 leading-relaxed">
-              Thank.s sir
-            </p>
-            <div class="flex items-center gap-6 mt-3 text-gray-600">
-              <div class="flex items-center gap-1.5 hover:text-blue-600 cursor-pointer">
-                <i class="bi bi-hand-thumbs-up text-lg"></i>
-                <span class="text-sm font-medium">7</span>
-              </div>
-              <div class="flex items-center gap-1.5 hover:text-red-600 cursor-pointer">
-                <i class="bi bi-hand-thumbs-down text-lg"></i>
-              </div>
-              <span class="text-sm font-medium hover:text-blue-600 cursor-pointer">Reply</span>
-            </div>
-          </div>
-          <button class="text-gray-400 hover:text-gray-600">
-            <i class="bi bi-three-dots-vertical"></i>
-          </button>
-        </div>
-      </div>
+    <div class=" commentslist ">
+      <x-commentskeleton/>
+     
+     
 
     </div>
   </div>
@@ -384,6 +268,78 @@
 
 
     <script>
+
+      // class
+      function btnhide(){
+        $('.com-input').val('');
+        $('.btn-com').removeClass('flex');
+        $('.btn-com').addClass('hidden');
+
+      }
+
+      function commentdata(responce){
+        
+            let = layout = '';
+             $('.comment-count').html(`${responce.commentcount} Comments`);
+            responce.comments.forEach((item,index)=> {
+
+              layout +=` <div class="px-6 py-5 hover:bg-gray-50">
+        <div class="flex gap-4">
+          <div class="w-9 h-9 rounded-full bg-green-600 flex items-center justify-center text-white font-semibold shrink-0">
+            R
+          </div>
+          <div class="flex-1">
+            <div class="flex items-center gap-2">
+              <span class="font-semibold text-gray-900">${item.user.name}</span>
+              <span class="text-gray-500 text-sm">${moment(item.created_at).fromNow()}</span>
+            </div>
+            <p class="text-gray-800 mt-1 leading-relaxed">
+              ${item.comment}
+            </p>
+            <div class="flex items-center gap-6 mt-3 text-gray-600">
+              <div class="flex items-center gap-1.5 hover:text-blue-600 cursor-pointer">
+                <i class="bi bi-hand-thumbs-up text-lg"></i>
+                <span class="text-sm font-medium">14</span>
+              </div>
+              <div class="flex items-center gap-1.5 hover:text-red-600 cursor-pointer">
+                <i class="bi bi-hand-thumbs-down text-lg"></i>
+              </div>
+              <span class="text-sm font-medium hover:text-blue-600 cursor-pointer">Reply</span>
+            </div>
+          </div>
+          <button class="text-gray-400 hover:text-gray-600">
+            <i class="bi bi-three-dots-vertical"></i>
+          </button>
+        </div>
+      </div>`;
+              
+            });
+
+            $('.commentslist').html(layout);
+
+
+      }
+
+
+      // comments data initially
+      $.ajax({
+         url:'/get-comment',
+          type:'GET',
+          data:{
+            'video_id':$("input[name='video_id']").val(),
+            'user_id':$("input[name='user_id']").val(),
+          },
+          // beforeSend:function(){
+          //   $('.comment-count').addClass('hidden').removeClass('flex');
+          //   // $('.comments-skeleton').addClass('block').removeClass('hidden');
+          // }
+          success:function(responce){
+            commentdata(responce);
+            // $('.comment-count').addClass('flex').removeClass('hidden');
+            // $('.comments-skeleton').addClass('hidden').removeClass('block');
+
+          }
+      })
       
 
       $('.comment-btn').on('click',function(){
@@ -396,8 +352,28 @@
             'video_id':$("input[name='video_id']").val(),
             'user_id':$("input[name='user_id']").val(),
           },
+          beforeSend:function(){
+            $('.comment-btn').attr('disabled',true);
+            $('.comment-btn').addClass('bg-gray-600');
+            $('.com-input').val('');
+            $('.comment-text').addClass('hidden');
+            $('.loader').removeClass('hidden');
+          },
           success:function(responce){
             console.log(responce);
+          if(!responce){
+            window.location.assign('/login');
+          }else{
+            $('.comment-btn').attr('disabled',false);
+            $('.comment-btn').removeClass('bg-gray-600');
+            $('.comment-text').removeClass('hidden');
+            $('.comment-count').html(`${responce.commentcount} Comments`);
+            $('.loader').addClass('hidden');
+            btnhide();
+            commentdata(responce);
+
+          }
+
           }
         })
       })

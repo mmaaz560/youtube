@@ -46,7 +46,7 @@
 
             
 
-          <div class="grid gap-4 grid-cols-1 rounded-lg overflow-hidden  md:grid-cols-2 lg:grid-cols-3">
+            <div class="grid gap-4 grid-cols-1 rounded-lg overflow-hidden  md:grid-cols-2 lg:grid-cols-3">
 
                 @foreach ($allVideos as $item)
                   <a href="/watch/{{ $item['id'] }}" class=" hover:bg-gray-300 rounded-lg cursor-pointer transition-all duration-200 p-3">

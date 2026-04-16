@@ -6,10 +6,23 @@
         <img src="https://www.freeiconspng.com/uploads/youtube-logo-png-transparent-image-5.png" width="100px" alt="">
     </div>
     <div class="search flex gap-2 w-[500px] items-center">
-        <div class="flex gap-2 outline-1 ps-2 overflow-hidden rounded-full">
-            <input type="text" class="w-100 "  placeholder="Search">
+
+      <div class="">
+        <div class="flex gap- outline-1  overflow-hidden rounded-full">
+            <input type="text" class="w-100 ps-3 outline-none search-bar"  placeholder="Search">
             <i class="bi bi-search px-3 py-1 bg-gray-400"></i>
         </div>
+        <div class=" ">
+            <ul class="bg-gray-400   overflow-hidden mt-1 w-100 rounded-md unstyled absolute search-list video-list hidden  text-gray-700">
+                
+               
+            </ul>
+
+        </div>
+       </div>
+
+
+
         <i class="bi bi-mic px-2 py-1  bg-gray-400 rounded-full "></i>
     </div>
     <div class="create  flex gap-2 items-center">
@@ -41,3 +54,36 @@
 
     </div>
 </div>
+
+<script>
+  $('.search-bar').on('keyup', function(e){
+    let val = $(this).val();
+    if(val.length > 0){
+        $('.search-list').removeClass('hidden')
+
+        $.ajax({
+            url:'/search',
+            type:'POST',
+            data:{
+                searchtrem: val
+            },
+            success: function(response){
+                let list = ''
+                response.forEach((item , index) =>{
+                    list += ` 
+                    <a href='/search/${item.title}' class="ps-3 block hover:bg-gray-500 pt-1">
+                      <li >
+                        ${item.title}
+                      </li>
+                    </a>`
+                    
+                })
+                $('.search-list').html(list);
+            }
+        })
+        
+    }else{
+        $('.search-list').addClass('hidden')
+    }
+  })
+</script>

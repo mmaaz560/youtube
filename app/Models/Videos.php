@@ -10,7 +10,7 @@ class Videos extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function View(){
-       return $this->hasMany(View::class ,'video_id'); 
+    public function views(){
+       return $this->hasMany(Views::class ,'video_id'); 
     }
 }

@@ -67,7 +67,7 @@
             let content = ''
             response.forEach((item,index) => {
                 content += `
-                <div class="flex gap-4 hover:bg-gray-300 p-3 rounded-lg">
+                <a href='/watch/${item.id}' class="flex gap-4 hover:bg-gray-300 p-3 rounded-lg">
         
         <div class="w-[320px] rounded-lg overflow-hidden  h-[180px] shrink-0">
             <img width="100%" src="/storage/${item.thumbnail}" class="h-[180px] object-fit-cover" alt="">
@@ -77,6 +77,7 @@
             <h2 class="text-lg font-semibold">
                 ${item.title}
             </h2>
+             <p class="text-sm text-[#aaaaaa]"> ${item?.views[0]?.views ? item?.views[0]?.views : 0} views &bull; 1 day ago</p>
                <div class="flex gap-2">
                   <div class="w-7 h-7 rounded-full flex items-center justify-center bg-green-300">
                     A
@@ -91,7 +92,7 @@
             </p>
         </div>
 
-             </div>
+             </a>
                 `
             })
             $('.video-list').html(content)

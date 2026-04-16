@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Views extends Model
 {
-     public function Video(){
-       return $this->hasMany(Video::class ,'video_id'); 
+     public function videos(){
+       return $this->hasMany(Videos::class ,'video_id'); 
     }
 }

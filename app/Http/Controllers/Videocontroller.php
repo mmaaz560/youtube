@@ -73,7 +73,7 @@ class Videocontroller extends Controller
   }
 
   public function searchvideos(Request $req){
-    $videos=Videos::where('title', $req->input('title'))->with('user')->get();
+    $videos=Videos::where('title', $req->input('title'))->with(['user','views'])->get();
     return response()->json($videos);
   }
 }

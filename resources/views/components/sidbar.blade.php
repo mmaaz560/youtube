@@ -1,8 +1,8 @@
 <x-layout>
-        <div class="flex pt-16">
 
-        <div class="w-60 p-4 h-[calc(100vh-64px)] overflow-y-scroll scrollbar-hide shadow-2xl fixed left-0 top-16">
-
+   <div class="flex pt-16 ">
+        <div class="w-60 p-4  h-[calc(100vh-64px)] overflow-y-scroll scrollbar-hide shadow-2xl fixed left-0 top-16">
+            
 
             <a href="#" class="flex items-center gap-4 px-4 py-2 rounded-xl hover:bg-gray-100 transition">
                 <i class="bi bi-house-door text-lg"></i>

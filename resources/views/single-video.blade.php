@@ -87,7 +87,7 @@
     <div class="px-6 py-4  flex items-center gap-4 bg-white">
       <div class="flex items-center gap-3">
         <h2 class="text-xl font-semibold comment-count text-gray-800">0 Comments</h2>
-      </div>
+      </div>                
       <div class="flex items-center gap-2 text-gray-600 hover:text-gray-800 cursor-pointer">
         <i class="bi bi-filter text-xl"></i>
         <span class="font-medium">Sort by</span>
@@ -140,10 +140,7 @@
     <!-- Comments List -->
     <div class=" commentslist ">
       <x-commentskeleton/>
-     
-     
-
-    </div>
+     </div>
   </div>
 
         </div>
@@ -276,12 +273,28 @@
         $('.btn-com').addClass('hidden');
 
       }
+       
+      let input = document.querySelector('.com-input');
+      let btnBox = document.querySelector('.btn-com');
 
-      function commentdata(responce){
-        
-            let = layout = '';
-             $('.comment-count').html(`${responce.commentcount} Comments`);
-            responce.comments.forEach((item,index)=> {
+    //  Show buttons on focus
+    input.addEventListener('click', () => {
+        btnBox.classList.remove('hidden');
+        btnBox.classList.add('flex');
+    });
+
+    // Cancel function
+    function cancelComment() {
+        input.value = '';
+        btnBox.classList.add('hidden');
+        btnBox.classList.remove('flex');
+    }
+
+      function commentdata(response){
+          console.log(response)
+            let layout = '';
+             $('.comment-count').html(`${response.comments.length} Comments`);
+            response.comments.forEach((item,index)=> {
 
               layout +=` <div class="px-6 py-5 hover:bg-gray-50">
         <div class="flex gap-4">
@@ -331,10 +344,10 @@
           },
           // beforeSend:function(){
           //   $('.comment-count').addClass('hidden').removeClass('flex');
-          //   // $('.comments-skeleton').addClass('block').removeClass('hidden');
-          // }
-          success:function(responce){
-            commentdata(responce);
+          //   $('.comments-skeleton').addClass('block').removeClass('hidden');
+          // },
+          success:function(response){
+            commentdata(response);
             // $('.comment-count').addClass('flex').removeClass('hidden');
             // $('.comments-skeleton').addClass('hidden').removeClass('block');
 
@@ -342,63 +355,53 @@
       })
       
 
-      $('.comment-btn').on('click',function(){
+      $('.comment-btn').on('click', function(){
 
-        $.ajax({
-          url:'/add-comment',
-          type:'POST',
-          data:{
-            'comment':$("input[name='comment']").val(),
-            'video_id':$("input[name='video_id']").val(),
-            'user_id':$("input[name='user_id']").val(),
-          },
-          beforeSend:function(){
-            $('.comment-btn').attr('disabled',true);
+    $.ajax({
+        url: '/add-comment',
+        type: 'POST',
+        data: {
+            'comment': $("input[name='comment']").val(),
+            'video_id': $("input[name='video_id']").val(),
+            'user_id': $("input[name='user_id']").val(),
+        },
+        beforeSend: function(){
+            $('.comment-btn').attr('disabled', true);
             $('.comment-btn').addClass('bg-gray-600');
             $('.com-input').val('');
             $('.comment-text').addClass('hidden');
             $('.loader').removeClass('hidden');
-          },
-          success:function(responce){
-            console.log(responce);
-          if(!responce){
-            window.location.assign('/login');
-          }else{
-            $('.comment-btn').attr('disabled',false);
+        },
+        success: function(response){
+            console.log(response);
+
+            // Re-enable button
+            $('.comment-btn').attr('disabled', false);
             $('.comment-btn').removeClass('bg-gray-600');
             $('.comment-text').removeClass('hidden');
-            $('.comment-count').html(`${responce.commentcount} Comments`);
             $('.loader').addClass('hidden');
+
+            if(!response || response.status === false){
+                window.location.assign('/login');
+                return;
+            }
+
+            // Success case
             btnhide();
-            commentdata(responce);
-
-          }
-
-          }
-        })
-      })
-
-
-
-
-
-
-     
-      let input = document.querySelector('.com-input');
-      let btnBox = document.querySelector('.btn-com');
-
-    //  Show buttons on focus
-    input.addEventListener('focus', () => {
-        btnBox.classList.remove('hidden');
-        btnBox.classList.add('flex');
+            commentdata(response);
+            $('.comment-count').html(`${response.comments.length} Comments`);
+        },
+        error: function(xhr) {
+            console.error(xhr);
+            // Re-enable button on error too
+            $('.comment-btn').attr('disabled', false);
+            $('.comment-btn').removeClass('bg-gray-600');
+            $('.comment-text').removeClass('hidden');
+            $('.loader').addClass('hidden');
+        }
     });
-
-    // Cancel function
-    function cancelComment() {
-        input.value = '';
-        btnBox.classList.add('hidden');
-        btnBox.classList.remove('flex');
-    }
+});
+     
 </script>
    
          
